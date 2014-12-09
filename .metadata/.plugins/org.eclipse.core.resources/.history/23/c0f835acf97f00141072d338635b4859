@@ -6,7 +6,7 @@ import interv.zappos.challenge.util.*;
 
 /**
  * @author Prathiba Ramachandramurthy
- * Class Name: LoginDataHelper.java
+ * Class Name: LoginDataHelpher.java
  * Aim: Class implementing LoginService interface to check whether the user has
  * logged in within the last 24 hours
  */
