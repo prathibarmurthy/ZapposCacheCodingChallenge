@@ -1,15 +1,14 @@
 Zappos Cache Coding Chalenge
 
-1.	What was the reasoning behind your implementation of the cache?
-	Answer: 
-	Cache Implementation: Concurrent Least Recently used Cache 
-a)	Since there would be more users than can fit in the cache so we need to have space efficient cache so cache implemented removes the user not accessed for a long time and having login time difference more than 24hrs
-b)	Since there are many threads updating the database other than this program, we need a concurrent implementation of cache so that it is synchronous and thread safe. 
+1.What was the reasoning behind your implementation of the cache?
+Answer: 
+Cache Implementation: Concurrent Least Recently used Cache 
+a) Since there would be more users than can fit in the cache so we need to have space efficient cache so cache implemented removes the user not accessed for a long time and having login time difference more than 24hrs
+b) Since there are many threads updating the database other than this program, we need a concurrent implementation of cache so that it is synchronous and thread safe. 
 As an addition to this, if we consider to keep the server updated then we can poll every few constant minutes and thus have an updated set
 In the same way we can also have a broadcast of the changes made in order to circulate the change when we update the last login time for user.
 
-	
-2.	How does your cache improve performance?
+2. How does your cache improve performance?
 Answer: 
 Caching techniques are commonly used to improve application performance by storing relevant data as close as possible to the data consumer, thus avoiding repetitive data creation, processing, and transportation. For example, storing data that does not change, such as a 
 userID whose login time doesn’t change.
