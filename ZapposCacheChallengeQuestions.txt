@@ -16,16 +16,16 @@ Scalability : The same data are often required by many users and processes in th
 Caching data can also help scale the resources of your database server. By storing frequently used data in a cache, fewer database requests are made, meaning that more users can be served.
 Availability: Occasionally the services that provide information to your application may be unavailable. By storing that data in another place, your application may be able to survive system failures such as network latency, Web service problems, or hardware failures.
 
-3.	What are the various usage patterns that make the cache more or less effective in terms of performance?
-	Answer: 
-	Usage patterns for the cache to be effective:
-a)	When user login time doesn’t change and hasUserLoggedInWithin24 has been called on same userID then if it's stored in the cache, then we can avoid valuable resources of server database being wasted for recreating the same output.
-b)	Server database becomes occasionally unavailable, hence By storing that data in the cache, the system may be able to survive system failures such as network latency, Web service problems, or hardware failures.
-c)	Also, storing frequently used data in a cache, fewer database requests are made, meaning that more users can be served.
+3. What are the various usage patterns that make the cache more or less effective in terms of performance?
+Answer: 
+Usage patterns for the cache to be effective:
+a) When user login time doesn’t change and hasUserLoggedInWithin24 has been called on same userID then if it's stored in the cache, then we can avoid valuable resources of server database being wasted for recreating the same output.
+b) Server database becomes occasionally unavailable, hence By storing that data in the cache, the system may be able to survive system failures such as network latency, Web service problems, or hardware failures.
+c) Also, storing frequently used data in a cache, fewer database requests are made, meaning that more users can be served.
 
 Usage patterns for the cache to be less effective:
 
-a)	If there are frequent changes in the user login data, i.e. login time, then there are too many updates to the cache which can lead to cache staleness
+a) If there are frequent changes in the user login data, i.e. login time, then there are too many updates to the cache which can lead to cache staleness
 Stale data; this means that when you use cached content/data you are at risk of presenting old data that's no longer relevant to the new situation
-b)	If the number of users with login time less than 24 hrs to the current time is greater than the size of cache, then there is a chance for the users to be deleted from the cache. If the user deleted from the cache is the one on which hasUserLoggedInWithin24 is called then call to the database is made which is costly in terms of time
-c)	Caching consumes RAM memory, Also there is overhead, i.e. all the business logic made sure for the data to be somewhere between being fast and being stale leads to complexity, and complexity leads to more code that we need to maintain and understand. We can easily lose oversight of where data exists in the caching complex, at what level, and how to fix the stale data if we get it.
+b) If the number of users with login time less than 24 hrs to the current time is greater than the size of cache, then there is a chance for the users to be deleted from the cache. If the user deleted from the cache is the one on which hasUserLoggedInWithin24 is called then call to the database is made which is costly in terms of time
+c) Caching consumes RAM memory, Also there is overhead, i.e. all the business logic made sure for the data to be somewhere between being fast and being stale leads to complexity, and complexity leads to more code that we need to maintain and understand. We can easily lose oversight of where data exists in the caching complex, at what level, and how to fix the stale data if we get it.
