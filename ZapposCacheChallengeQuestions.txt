@@ -1,0 +1,32 @@
+Zappos Cache Coding Chalenge
+
+1.	What was the reasoning behind your implementation of the cache?
+	Answer: 
+	Cache Implementation: Concurrent Least Recently used Cache 
+a)	Since there would be more users than can fit in the cache so we need to have space efficient cache so cache implemented removes the user not accessed for a long time and having login time difference more than 24hrs
+b)	Since there are many threads updating the database other than this program, we need a concurrent implementation of cache so that it is synchronous and thread safe. 
+As an addition to this, if we consider to keep the server updated then we can poll every few constant minutes and thus have an updated set
+In the same way we can also have a broadcast of the changes made in order to circulate the change when we update the last login time for user.
+
+	
+2.	How does your cache improve performance?
+Answer: 
+Caching techniques are commonly used to improve application performance by storing relevant data as close as possible to the data consumer, thus avoiding repetitive data creation, processing, and transportation. For example, storing data that does not change, such as a 
+userID whose login time doesn’t change.
+Scalability : The same data are often required by many users and processes in this system. If this information is processed for each request, valuable resources are wasted recreating the same output. Instead, you can store the results in a cache and reuse them for each request. This improves the scalability of your application because as the user base increases, the demand for server resources for these tasks remains constant. 
+Caching data can also help scale the resources of your database server. By storing frequently used data in a cache, fewer database requests are made, meaning that more users can be served.
+Availability: Occasionally the services that provide information to your application may be unavailable. By storing that data in another place, your application may be able to survive system failures such as network latency, Web service problems, or hardware failures.
+
+3.	What are the various usage patterns that make the cache more or less effective in terms of performance?
+	Answer: 
+	Usage patterns for the cache to be effective:
+a)	When user login time doesn’t change and hasUserLoggedInWithin24 has been called on same userID then if it's stored in the cache, then we can avoid valuable resources of server database being wasted for recreating the same output.
+b)	Server database becomes occasionally unavailable, hence By storing that data in the cache, the system may be able to survive system failures such as network latency, Web service problems, or hardware failures.
+c)	Also, storing frequently used data in a cache, fewer database requests are made, meaning that more users can be served.
+
+Usage patterns for the cache to be less effective:
+
+a)	If there are frequent changes in the user login data, i.e. login time, then there are too many updates to the cache which can lead to cache staleness
+Stale data; this means that when you use cached content/data you are at risk of presenting old data that's no longer relevant to the new situation
+b)	If the number of users with login time less than 24 hrs to the current time is greater than the size of cache, then there is a chance for the users to be deleted from the cache. If the user deleted from the cache is the one on which hasUserLoggedInWithin24 is called then call to the database is made which is costly in terms of time
+c)	Caching consumes RAM memory, Also there is overhead, i.e. all the business logic made sure for the data to be somewhere between being fast and being stale leads to complexity, and complexity leads to more code that we need to maintain and understand. We can easily lose oversight of where data exists in the caching complex, at what level, and how to fix the stale data if we get it.
