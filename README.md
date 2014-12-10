@@ -28,3 +28,9 @@ Functionality:
 
 2. userJustLoggedIn(String userId) method takes userID checks
 	a) When the user logs into system add the userID and current login time in cache. Update the sever database also.
+
+FakeDBAccess.java
+-Library to pretend read and write to the database.
+
+LoginService.java
+Interface to implement certain methods depicting the actions of the cache based on when the user was previously logged in.
